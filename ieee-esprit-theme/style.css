@@ -1,0 +1,264 @@
+/*
+Theme Name: IEEE Esprit Clone
+Theme URI: https://esprit.ieee.tn/
+Author: Antigravity
+Description: A custom WordPress theme looking like IEEE Esprit Student Branch.
+Version: 1.0
+Domain Path: /languages
+*/
+
+:root {
+    --ieee-blue: #00457C; /* Darker Blue */
+    --ieee-dark-blue: #002D51; /* Very Dark Blue */
+    --ieee-yellow: #FFD200; /* IEEE Yellow */
+    --ieee-black: #000000;
+    --ieee-white: #FFFFFF;
+    --text-color: #333;
+    --bg-light: #F8F9FA;
+}
+/* ... existing reset ... */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif; 
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--ieee-white);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header */
+.site-header {
+    background-color: var(--ieee-white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-logo img {
+    height: 60px;
+    width: auto;
+}
+
+.main-navigation ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.main-navigation a {
+    font-weight: 700;
+    color: var(--ieee-blue);
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.main-navigation a:hover {
+    color: var(--ieee-yellow);
+}
+
+.register-btn {
+    background-color: var(--ieee-yellow);
+    color: var(--ieee-dark-blue) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+}
+
+.register-btn:hover {
+    background-color: #e6bd00;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 45, 81, 0.8), rgba(0, 45, 81, 0.8)), url('assets/images/events/5.png'); /* Fallback image */
+    background-size: cover;
+    background-position: center;
+    color: var(--ieee-white);
+    padding: 8rem 2rem;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    opacity: 1;
+    font-weight: 400;
+}
+
+.hero-btn {
+    display: inline-block;
+    background-color: var(--ieee-yellow);
+    color: var(--ieee-dark-blue);
+    padding: 1rem 2.5rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: transform 0.2s, background-color 0.2s;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.hero-btn:hover {
+    transform: translateY(-2px);
+    background-color: #e6bd00;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* About Section */
+.about-section {
+    padding: 5rem 2rem;
+    background-color: var(--ieee-white);
+    text-align: center;
+}
+/* Section Title Style Update */
+.section-title {
+    color: var(--ieee-blue);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--ieee-yellow);
+    margin: 15px auto 0;
+}
+
+.about-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+/* Stats / Units Grid */
+.units-section {
+    background-color: var(--bg-light);
+    padding: 5rem 2rem;
+}
+
+.units-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.unit-card {
+    background: var(--ieee-white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s;
+    border-top: 4px solid var(--ieee-blue);
+}
+
+.unit-card:hover {
+    transform: translateY(-5px);
+}
+
+.unit-card h3 {
+    margin-bottom: 1rem;
+    color: var(--ieee-dark-blue);
+}
+
+/* Footer (Matching footer.php) */
+.site-footer {
+    background-color: #1a1a1a;
+    color: #ccc;
+    padding: 4rem 2rem 2rem;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+}
+
+.footer-widget h3 {
+    color: var(--ieee-white);
+    margin-bottom: 1.5rem;
+}
+
+.footer-widget ul {
+    list-style: none;
+}
+
+.footer-widget li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-widget a:hover {
+    color: var(--ieee-blue);
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #333;
+    padding-top: 2rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+    }
+    
+    .main-navigation ul {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1rem;
+        gap: 1rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+}
