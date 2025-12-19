@@ -302,18 +302,12 @@ a {
 .stat-item {
     transition: all 0.3s ease;
 }
-.stat-item:hover {
-    transform: translateY(-5px) scale(1.05);
-    background-color: rgba(0,0,0,0.2); /* Slight darken to make fire pop */
-    box-shadow: 0 0 20px rgba(1, 25, 176, 0.421), 0 0 40px rgba(255, 215, 0, 0.4); /* Intense Fire Glow */
-}
+
 .stat-item:hover h3 {
-    color: #fffb00 !important; /* OrangeRed override */
+    color: #ffc400 !important; /* OrangeRed override */
     text-shadow: 0 0 10px #0066ff, 0 0 20px #ffc800; /* Text Fire Glow */
 }
-.stat-item:hover p {
-    text-shadow: 0 0 5px #0059ff;
-}
+
 
 @keyframes scrollAlbums {
     0% { transform: translateX(0); }
