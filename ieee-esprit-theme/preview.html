@@ -6,6 +6,137 @@
     <title>Preview - IEEE EPT Clone</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="./assets/images/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .excom-member {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            padding: 1.5rem;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .excom-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        /* Shine sweep effect */
+        .excom-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -75%;
+            z-index: 2;
+            display: block;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 100%);
+            transform: skewX(-25deg);
+        }
+        .excom-member:hover::before {
+            animation: shine .75s;
+        }
+        @keyframes shine {
+            100% {
+                left: 125%;
+            }
+        }
+        .email-icon {
+            display: inline-block;
+            margin-top: 10px;
+            color: #00457C;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        .email-icon:hover {
+            color: #FFD200;
+        }
+
+        /* Event Carousel Styles */
+        .carousel-wrapper {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem; /* Make room for arrows */
+        }
+        .events-grid {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 1.5rem;
+            padding-bottom: 1rem; /* Space for scrollbar if visible, or aesthetics */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE 10+ */
+        }
+        .events-grid::-webkit-scrollbar { 
+            display: none;  /* Chrome/Safari */
+        }
+        
+        .event-card {
+            min-width: 300px; /* Fixed width for carousel items */
+            flex: 0 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .event-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        /* Shine effect for events - same as excom-member */
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -75%;
+            z-index: 2;
+            display: block;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 100%);
+            transform: skewX(-25deg);
+        }
+        .event-card:hover::before {
+            animation: shine .75s;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #00457C;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background 0.3s;
+        }
+        .carousel-btn:hover {
+            background-color: #FFD200;
+            color: #00457C;
+        }
+        .prev-btn { left: -10px; }
+        .next-btn { right: -10px; }
+
+    </style>
 </head>
 <body class="home">
     <!-- Header -->
@@ -40,7 +171,7 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" class="about-section">
+        <section id="about" class="about-section reveal">
             <div class="about-content">
                 <h2 class="section-title">About Us</h2>
                 <div class="about-text">
@@ -57,43 +188,46 @@
         </section>
 
         <!-- Statistics Section -->
-        <section class="stats-section" style="background-color: #002D51; color: white; padding: 4rem 2rem;">
+        <section class="stats-section reveal" style="background-color: #002D51; color: white; padding: 4rem 2rem;">
             <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; text-align: center;">
-                <div class="stat-item">
-                    <h3 style="font-size: 3rem; color: #FFD200; margin-bottom: 0.5rem;">+1200</h3>
+                <div class="stat-item shine-effect" style="position: relative; padding: 1rem; border-radius: 8px;">
+                    <h3 style="font-size: 3rem; color: #FFE066; margin-bottom: 0.5rem;">+50</h3>
                     <p style="font-size: 1.2rem; text-transform: uppercase; font-weight: bold;">Active Members</p>
                 </div>
-                <div class="stat-item">
-                    <h3 style="font-size: 3rem; color: #FFD200; margin-bottom: 0.5rem;">+50</h3>
+                <div class="stat-item shine-effect" style="position: relative; padding: 1rem; border-radius: 8px;">
+                    <h3 style="font-size: 3rem; color: #FFE066; margin-bottom: 0.5rem;">+2</h3>
                     <p style="font-size: 1.2rem; text-transform: uppercase; font-weight: bold;">Awards</p>
                 </div>
-                <div class="stat-item">
-                    <h3 style="font-size: 3rem; color: #FFD200; margin-bottom: 0.5rem;">+100</h3>
+                <div class="stat-item shine-effect" style="position: relative; padding: 1rem; border-radius: 8px;">
+                    <h3 style="font-size: 3rem; color: #FFE066; margin-bottom: 0.5rem;">+50</h3>
                     <p style="font-size: 1.2rem; text-transform: uppercase; font-weight: bold;">Events</p>
                 </div>
-                <div class="stat-item">
-                    <h3 style="font-size: 3rem; color: #FFD200; margin-bottom: 0.5rem;">5</h3>
+                <div class="stat-item shine-effect" style="position: relative; padding: 1rem; border-radius: 8px;">
+                    <h3 style="font-size: 3rem; color: #FFE066; margin-bottom: 0.5rem;">3</h3>
                     <p style="font-size: 1.2rem; text-transform: uppercase; font-weight: bold;">Units</p>
                 </div>
             </div>
         </section>
 
         <!-- Units/Chapters Section -->
-        <section class="units-section">
+        <section class="units-section reveal">
             <div class="header-container" style="text-align:center; padding-bottom: 2rem;">
                 <h2 class="section-title">Our Units</h2>
             </div>
             
             <div class="units-grid">
                 <div class="unit-card">
+                    <img src="./assets/images/partners/cs.png" alt="CS Logo" style="height: 80px; object-fit: contain; margin-bottom: 1rem;">
                     <h3>CS Chapter</h3>
                     <p>Computer Society</p>
                 </div>
                 <div class="unit-card">
+                    <img src="./assets/images/partners/smc.png" alt="SMCS Logo" style="height: 80px; object-fit: contain; margin-bottom: 1rem;">
                     <h3>SMCS Chapter</h3>
                     <p>Systems, Man, and Cybernetics Society</p>
                 </div>
                 <div class="unit-card">
+                    <img src="./assets/images/partners/wie.png" alt="WIE Logo" style="height: 80px; object-fit: contain; margin-bottom: 1rem;">
                     <h3>WIE Affinity Group</h3>
                     <p>Women in Engineering</p>
                 </div>
@@ -101,58 +235,75 @@
         </section>
 
         <!-- ExCom Section -->
-        <section class="excom-section" style="padding: 4rem 2rem; background-color: #f9f9f9;">
+        <section class="excom-section reveal" style="padding: 4rem 2rem; background-color: #f9f9f9;">
             <div class="header-container" style="text-align:center; padding-bottom: 2rem;">
                 <h2 class="section-title">Executive Committee</h2>
             </div>
-            <div class="excom-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
-                <!-- Member 1 -->
-                <div class="excom-member" style="text-align: center;">
-                    <img src="./assets/images/board/member3.jpg" alt="Taysir Rezgui" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
-                    <h3>Taysir Rezgui</h3>
-                    <p style="color: #666;">Logistic Manager</p>
-                    <a href="mailto:mohamed.bouslama@ieee.org">moahmed.bouslama@ieee.org</a>
-                </div>
-                <!-- Member 2 -->
+            <div class="excom-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+                <!-- Member 1: Chair -->
                 <div class="excom-member" style="text-align: center;">
                     <img src="./assets/images/board/member7.jpg" alt="Ahmed Kaffel" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
                     <h3>Ahmed Kaffel</h3>
                     <p style="color: #666;">Chair</p>
-                    <a href="mailto:ahmed.kaffel@ieee.org">ahmed.kaffel@ieee.org</a>
+                    <a href="mailto:ahmed.kaffel@ieee.org" class="email-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
-                <!-- Member 3 -->
+
+                <!-- Member 2: Vice Chair -->
                 <div class="excom-member" style="text-align: center;">
                     <img src="./assets/images/board/member1.jpg" alt="Nour Ben Amor" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
                     <h3>Nour Ben Amor</h3>
                     <p style="color: #666;">Vice-chair</p>
-                    <a href="mailto:nour.benamor@ieee.org">nour.benamor@ieee.org</a>
+                    <a href="mailto:nour.benamor@ieee.org" class="email-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
-                <!-- Member 4 -->
-                <div class="excom-member" style="text-align: center;">
-                    <img src="./assets/images/board/member2.jpg" alt="Wiem Aouadi" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
-                    <h3>Wiem Aouadi</h3>
-                    <p style="color: #666;">Treasurer</p>
-                    <a href="mailto:wiem.aouadi@ieee.org">wiem.aouadi@ieee.org</a>
-                </div>
-                <!-- Member 5 -->
+
+                <!-- Member 3: Secretary -->
                 <div class="excom-member" style="text-align: center;">
                     <img src="./assets/images/board/member5.jpg" alt="Nidhal Ben Rejeb" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
                     <h3>Nidhal Ben Rejeb</h3>
                     <p style="color: #666;">Secretary</p>
-                    <a href="mailto:nidhal.benrejeb@ieee.org">nidhal.benrejeb@ieee.org</a>
+                    <a href="mailto:nidhal.benrejeb@ieee.org" class="email-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
-                <!-- Member 6 -->
+
+                <!-- Member 4: Treasurer -->
+                <div class="excom-member" style="text-align: center;">
+                    <img src="./assets/images/board/member2.jpg" alt="Wiem Aouadi" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    <h3>Wiem Aouadi</h3>
+                    <p style="color: #666;">Treasurer</p>
+                    <a href="mailto:wiem.aouadi@ieee.org" class="email-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+
+                <!-- Member 5: Webmaster -->
                 <div class="excom-member" style="text-align: center;">
                     <img src="./assets/images/board/member6.jpg" alt="Baha Fraoua" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
                     <h3>Baha Fraoua</h3>
                     <p style="color: #666;">Webmaster</p>
-                    <a href="mailto:baha.fraoua@ieee.org">baha.fraoua@ieee.org</a>
+                    <a href="mailto:baha.fraoua@ieee.org" class="email-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+
+                <!-- Member 6: Logistic Manager -->
+                <div class="excom-member" style="text-align: center;">
+                    <img src="./assets/images/board/member3.jpg" alt="Taysir Rezgui" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    <h3>Taysir Rezgui</h3>
+                    <p style="color: #666;">Logistic Manager</p>
+                    <a href="mailto:mohamed.bouslama@ieee.org" class="email-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
             </div>
         </section>
 
         <!-- Partner Reveal Section -->
-        <section class="partner-section" style="padding: 4rem 2rem; text-align: center;">
+        <section class="partner-section reveal" style="padding: 4rem 2rem; text-align: center;">
             <h2 class="section-title">Our Partners</h2>
             <div class="partner-content" style="margin-top: 2rem;">
                 <img src="./assets/images/partners/partner1.jpg" alt="Partner Reveal" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
@@ -160,20 +311,137 @@
         </section>
 
         <!-- Events Section -->
-        <section class="events-section" style="padding: 4rem 2rem; background-color: #f9f9f9;">
             <div class="header-container" style="text-align: center; padding-bottom: 2rem;">
                 <h2 class="section-title">Latest Events</h2>
                 <p>Industrial Visits & Workshops</p>
             </div>
-            <div class="events-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto;">
-                <!-- Displaying a selection of event images -->
-                <img src="./assets/images/events/5.png" alt="Event" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
-                <img src="./assets/images/events/6.png" alt="Event" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
-                <img src="./assets/images/events/Mr Fakhri karray .png" alt="Event" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
-                <img src="./assets/images/events/Mr daminos.png" alt="Event" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
-                <!-- Additional images can be added here dynamically -->
+            
+            <div class="carousel-wrapper">
+                <button class="carousel-btn prev-btn" onclick="scrollCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
+                
+                <div class="events-grid" id="eventsCarousel">
+                    <!-- Event 1 -->
+                    <div class="event-card">
+                         <img src="./assets/images/events/5.png" alt="Event">
+                    </div>
+                    <!-- Event 2 -->
+                    <div class="event-card">
+                         <img src="./assets/images/events/6.png" alt="Event">
+                    </div>
+                    <!-- Event 3 -->
+                    <div class="event-card">
+                         <img src="./assets/images/events/Mr Fakhri karray .png" alt="Event">
+                    </div>
+                    <!-- Event 4 -->
+                    <div class="event-card">
+                         <img src="./assets/images/events/Mr daminos.png" alt="Event">
+                    </div>
+                    <!-- Duplicate items for demo purposes if needed, kept user's original structure but wrapped -->
+                </div>
+
+                <button class="carousel-btn next-btn" onclick="scrollCarousel(1)"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
+
+    <!-- Albums Section -->
+    <section class="albums-section reveal" style="padding: 4rem 2rem; background-color: #fff;">
+        <div class="header-container" style="text-align:center; padding-bottom: 2rem;">
+            <h2 class="section-title">Albums from previous event</h2>
+        </div>
+        <!-- Scrollable Bar Wrapper -->
+        <div class="albums-slider-wrapper" style="overflow: hidden; max-width: 100vw; position: relative;">
+            <div class="albums-track" style="display: flex; gap: 1rem; width: max-content; animation: scrollAlbums 30s linear infinite;">
+                <!-- Original Images -->
+                <img src="./assets/images/events/576557037_122152042226707524_7941626905191799824_n.jpg" alt="Album Image 1" style="height: 300px; width: auto; border-radius: 8px; object-fit: cover;">
+                <img src="./assets/images/events/550641366_122149523072707524_3819718461054996039_n.jpg" alt="Album Image 2" style="height: 300px; width: auto; border-radius: 8px; object-fit: cover;">
+                <img src="./assets/images/events/553689830_122146669844707524_1736286512164959328_n.jpg" alt="Album Image 3" style="height: 300px; width: auto; border-radius: 8px; object-fit: cover;">
+                <img src="./assets/images/events/565144600_122149522958707524_53051052534698368_n.jpg" alt="Album Image 4" style="height: 300px; width: auto; border-radius: 8px; object-fit: cover;">
+                <img src="./assets/images/events/565144648_122149523054707524_3824913789124728404_n.jpg" alt="Album Image 5" style="height: 300px; width: auto; border-radius: 8px; object-fit: cover;">
+                <img src="./assets/images/events/566328118_122149516094707524_4883121584643073705_n.jpg" alt="Album Image 6" style="height: 300px; width: auto; border-radius: 8px; object-fit: cover;">
+                <img src="./assets/images/events/571121213_122150164328707524_5843545891729387754_n.jpg" alt="Album Image 7" style="height: 300px; width: auto; border-radius: 8px; object-fit: cover;">
+                <img src="./assets/images/events/572065135_122151175964707524_5933902236749581834_n.jpg" alt="Album Image 8" style="height: 300px; width: auto; border-radius: 8px; object-fit: cover;">
+                <img src="./assets/images/events/574849410_122151174560707524_4982688145841468010_n.jpg" alt="Album Image 9" style="height: 300px; width: auto; border-radius: 8px; object-fit: cover;">
+                
+                <!-- Duplicated for Infinite Loop Effect -->
+                <img src="./assets/images/events/576557037_122152042226707524_7941626905191799824_n.jpg" alt="Album Image 1" style="height: 300px; width: auto; border-radius: 8px; object-fit: cover;">
+                <img src="./assets/images/events/550641366_122149523072707524_3819718461054996039_n.jpg" alt="Album Image 2" style="height: 300px; width: auto; border-radius: 8px; object-fit: cover;">
+                <img src="./assets/images/events/553689830_122146669844707524_1736286512164959328_n.jpg" alt="Album Image 3" style="height: 300px; width: auto; border-radius: 8px; object-fit: cover;">
+                <img src="./assets/images/events/565144600_122149522958707524_53051052534698368_n.jpg" alt="Album Image 4" style="height: 300px; width: auto; border-radius: 8px; object-fit: cover;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Carousel Script -->
+    <script>
+        const container = document.getElementById('eventsCarousel');
+        const scrollAmount = 320; // Card width + gap approx
+        let autoPlayInterval;
+
+        function scrollCarousel(direction) {
+            if (!container) return;
+
+            // Check if we need to loop
+            // Tolerance of 10px just to be safe with float pixels
+            const maxScrollLeft = container.scrollWidth - container.clientWidth;
+            
+            if (direction === 1 && container.scrollLeft >= maxScrollLeft - 10) {
+                // Loop back to start
+                container.scrollTo({ left: 0, behavior: 'smooth' });
+            } else if (direction === -1 && container.scrollLeft <= 0) {
+                 // Loop to end (optional, usually people expect prev to go back, but let's stick to simple scroll or loop to end)
+                 // For now, let's just let it scroll normally. If wanted, we could scroll to maxScrollLeft.
+                 container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                container.scrollBy({
+                    left: direction * scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                scrollCarousel(1);
+            }, 3000); // 3 seconds
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
+        // Initialize
+        if (container) {
+            startAutoPlay();
+            
+            // Pause on hover
+            const wrapper = document.querySelector('.carousel-wrapper');
+            if (wrapper) {
+                wrapper.addEventListener('mouseenter', stopAutoPlay);
+                wrapper.addEventListener('mouseleave', startAutoPlay);
+            }
+        }
+
+        // Scroll Reveal Script
+        document.addEventListener('DOMContentLoaded', () => {
+             const reveals = document.querySelectorAll('.reveal');
+             
+             const revealOnScroll = () => {
+                 const windowHeight = window.innerHeight;
+                 const elementVisible = 150;
+                 
+                 reveals.forEach((reveal) => {
+                     const elementTop = reveal.getBoundingClientRect().top;
+                     if (elementTop < windowHeight - elementVisible) {
+                         reveal.classList.add('active');
+                     }
+                 });
+             };
+             
+             window.addEventListener('scroll', revealOnScroll);
+             // Trigger once on load
+             revealOnScroll();
+        });
+    </script>
     </main>
 
     <!-- Footer -->
@@ -181,7 +449,7 @@
         <div class="footer-container">
             <div class="footer-widget">
                 <h3>IEEE EPT SB</h3>
-                <p>The largest Student Branch in Tunisia Section and Region 8.</p>
+                <p>The youngest Student Branch in Tunisia Section and Region 8.</p>
             </div>
             
             <div class="footer-widget">
@@ -197,7 +465,7 @@
             <div class="footer-widget">
                 <h3>Contact Us</h3>
                 <p>EPT School,<br>Tunis, Tunisia</p>
-                <p>Email: contact@ieee-ept.tn</p>
+                <p>Email: ept.sb@ieee.tn</p>
             </div>
 
             <div class="footer-widget">

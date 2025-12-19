@@ -1,16 +1,9 @@
-/*
-Theme Name: IEEE Esprit Clone
-Theme URI: https://esprit.ieee.tn/
-Author: Antigravity
-Description: A custom WordPress theme looking like IEEE Esprit Student Branch.
-Version: 1.0
-Domain Path: /languages
-*/
+
 
 :root {
     --ieee-blue: #00457C; /* Darker Blue */
     --ieee-dark-blue: #002D51; /* Very Dark Blue */
-    --ieee-yellow: #FFD200; /* IEEE Yellow */
+    --ieee-yellow: #FFE066; /* Softer Yellow */
     --ieee-black: #000000;
     --ieee-white: #FFFFFF;
     --text-color: #333;
@@ -47,14 +40,14 @@ a {
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.5rem 2rem;
+    padding: 0 2rem; /* Compact padding */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .site-logo img {
-    height: 60px;
+    height: 100px; /* Increased to 100px */
     width: auto;
 }
 
@@ -90,7 +83,7 @@ a {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(rgba(0, 45, 81, 0.8), rgba(0, 45, 81, 0.8)), url('assets/images/events/5.png'); /* Fallback image */
+    background: linear-gradient(rgba(0, 45, 81, 0.8), rgba(0, 45, 81, 0.8)), url('assets/images/events/565144648_122149523054707524_3824913789124728404_n.jpg');
     background-size: cover;
     background-position: center;
     color: var(--ieee-white);
@@ -207,18 +200,18 @@ a {
 
 /* Footer (Matching footer.php) */
 .site-footer {
-    background-color: #1a1a1a;
+    background-color: #333333;
     color: #ccc;
-    padding: 4rem 2rem 2rem;
+    padding: 1.5rem 2rem 0.5rem; /* More compact */
 }
 
 .footer-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
+    gap: 1.5rem; /* Reduced gap */
     max-width: 1200px;
     margin: 0 auto;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 .footer-widget h3 {
@@ -261,4 +254,72 @@ a {
     .hero-title {
         font-size: 2rem;
     }
+}
+
+/* Animations & Effects */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.shine-effect {
+    position: relative;
+    overflow: hidden;
+}
+.shine-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    z-index: 2;
+    display: block;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 100%);
+    transform: skewX(-25deg);
+}
+.shine-effect:hover::before {
+    animation: shine .75s;
+}
+
+/* Trigger shine on reveal */
+.reveal.active .shine-effect::before {
+    animation: shine 1s ease-out 0.2s; /* Shine once when revealed */
+}
+
+@keyframes shine {
+    100% {
+        left: 125%;
+    }
+}
+
+/* Fire Hover Effect for Stats */
+.stat-item {
+    transition: all 0.3s ease;
+}
+.stat-item:hover {
+    transform: translateY(-5px) scale(1.05);
+    background-color: rgba(0,0,0,0.2); /* Slight darken to make fire pop */
+    box-shadow: 0 0 20px rgba(1, 25, 176, 0.421), 0 0 40px rgba(255, 215, 0, 0.4); /* Intense Fire Glow */
+}
+.stat-item:hover h3 {
+    color: #fffb00 !important; /* OrangeRed override */
+    text-shadow: 0 0 10px #0066ff, 0 0 20px #ffc800; /* Text Fire Glow */
+}
+.stat-item:hover p {
+    text-shadow: 0 0 5px #0059ff;
+}
+
+@keyframes scrollAlbums {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Adjust based on duplication width */
+}
+/* Pause on hover */
+.albums-track:hover {
+    animation-play-state: paused;
 }
