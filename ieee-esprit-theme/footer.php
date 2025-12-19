@@ -17,8 +17,8 @@
             
             <div class="footer-widget">
                 <h3>Contact Us</h3>
-                <p>EPT School,<br>Tunis, Tunisia</p>
-                <p>Email: contact@ieee-ept.tn</p>
+                <p>Ecole Polytechnique de Tunisie,<br>La Marsa, Tunisia</p>
+                <p>Email: ept@ieee.tn</p>
             </div>
 
             <div class="footer-widget">
